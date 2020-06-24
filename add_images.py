@@ -2,7 +2,6 @@ import praw
 from bs4 import BeautifulSoup
 from urllib.request import Request, urlopen
 from urllib.parse import quote
-import requests
 import sys
 import os
 
@@ -59,7 +58,7 @@ sys.stdout.flush()
 
 for i in range(len(images)):
     sys.stdout.write(f"\rWriting image {i+1} of {len(images)}.")
-    img_data = requests.get(images[i]).content
+    img_data = urlopen(images[i]).read()
     with open(f"image_{i+1}.{images[i][-3:]}", "wb") as handler:
         handler.write(img_data)
         if (
