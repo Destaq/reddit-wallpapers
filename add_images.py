@@ -60,11 +60,11 @@ sys.stdout.flush()
 for i in range(len(images)):
     sys.stdout.write(f"\rWriting image {i+1} of {len(images)}.")
     img_data = requests.get(images[i]).content
-    with open(f"image_{i+1}.jpg", "wb") as handler:
+    with open(f"image_{i+1}.{images[i][-3:]}", "wb") as handler:
         handler.write(img_data)
         if (
-            os.stat(f"image_{i+1}.jpg").st_size < 200000
+            os.stat(f"image_{i+1}.{images[i][-3]}").st_size < 200000
         ):  # delete images under 200 kB; too fuzzy
-            os.remove(f"image_{i+1}.jpg")
+            os.remove(f"image_{i+1}.{images[i][-3]}")
 
 sys.stdout.write("\n")
