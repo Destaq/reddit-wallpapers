@@ -18,9 +18,9 @@ In order for `reddit-wallpapers` to work, you must create your own Reddit bot. R
   - Description: Any description you want
   - Redirect URL: http://localhost:8080
 
-3. Once you have done the above, click save. You should now see a bot named ImageBot on your page.
-4. Go to the bottom left of the ImageBot square and click edit. You will now see some information about the bot - most importantly, your `personal use script` and 1client id`.
-5. Go to wherever you have saved the `add_images.py` program and start replacing. Replace `client_id` with your personal use script (seen at the top of the bot square). Replace your client_id with your 27-character secret key (also seen in the bot square). Replace my username with your username, and `HIDDEN_PASSWORD` with your password.
+3. Once you have done the above, click `create app`. You should now see a bot named ImageBot on your page.
+4. Go to the bottom left of the ImageBot square and click edit. You will now see some information about the bot - most importantly, your `personal use script` and `secret`.
+5. Go to wherever you have saved the `add_images.py` program and start replacing. Replace `client_id` with your personal use script (seen at the top of the bot square). Replace your `client_secret` with your 27-character secret key (also seen in the bot square). Replace HIDDEN with your username, and `HIDDEN_PASSWORD` with your password.
 
 You are now all set up with your very own Reddit bot that can read data from Reddit! There's only a few more things to do before you too can get that beautiful changing background!
 
