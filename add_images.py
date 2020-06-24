@@ -6,19 +6,26 @@ import requests
 import sys
 import os
 
-os.chdir("/Users/Destaq/Desktop/Background_Images") # change to your blank directory
-print("Navigated to directory...\n")
+storage_directory = "/Users/Destaq/Desktop/Background_Images"
+os.chdir(storage_directory)  # change to your blank directory
+print("Navigated to directory...")
 
-SCRIPT = "HIDDEN_SCRIPT" # check README
-SECRET = "HIDDEN_SERCRET" # check README
+# clear directory each day to prevent duplicates
+filelist = [f for f in os.listdir(storage_directory)]
+for f in filelist:
+    os.remove(f)
+print("Removed previous files...\n")
+
+SCRIPT = "HIDDEN_SCRIPT"  # check README
+SECRET = "HIDDEN_SECRET"  # check README
 NUM_IMAGES = 100
 
 reddit = praw.Reddit(
     client_id=SCRIPT,
     client_secret=SECRET,
     user_agent="ImageBot",
-    username="MY_USERNAME", # your username
-    password="HIDDEN_PASSWORD", # your password
+    username="MY_USERNAME",  # your username
+    password="HIDDEN_PASSWORD",  # your password
 )
 
 subreddit = reddit.subreddit("wallpaper")
@@ -35,7 +42,7 @@ for i in range(len(links)):
     link_decoded = links[i][:21] + quote(links[i][21:])
 
     req = Request(link_decoded, headers={"User-Agent": "Mozilla/5.0"})
-    
+
     html_page = urlopen(req)
 
     soup = BeautifulSoup(html_page, "lxml")
@@ -48,11 +55,16 @@ for i in range(len(links)):
         ):
             images.append(link.get("href"))
 
+sys.stdout.flush()
+
 for i in range(len(images)):
     sys.stdout.write(f"\rWriting image {i+1} of {len(images)}.")
     img_data = requests.get(images[i]).content
     with open(f"image_{i+1}.jpg", "wb") as handler:
         handler.write(img_data)
-        if os.stat(f"image_{i+1}.jpg").st_size < 200000:  # delete images under 200 kB; too fuzzy
+        if (
+            os.stat(f"image_{i+1}.jpg").st_size < 200000
+        ):  # delete images under 200 kB; too fuzzy
             os.remove(f"image_{i+1}.jpg")
 
+sys.stdout.write("\n")
