@@ -18,7 +18,7 @@ reddit = praw.Reddit(
     client_secret=SECRET,
     user_agent="ImageBot",
     username="MY_USERNAME", # your username
-    password="MY_PASSWORD", # your password
+    password="HIDDEN_PASSWORD", # your password
 )
 
 subreddit = reddit.subreddit("wallpaper")
