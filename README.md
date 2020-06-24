@@ -6,7 +6,7 @@ This program will fetch, download, and save the 100 hottest wallpapers from the 
 - `beautifulsoup4` (for BeautifulSoup) (`pip3 install beautifulsoup4`)
 - `praw` (`pip3 install praw`)
 
-All the above modules are available on PyPI. You can download them each individually or simply run `pip install requirements.txt`.
+All the above modules are available on PyPI. You can download them each individually or simply run `pip3 install -r requirements.txt` in the folder that houses requirements.txt.
 
 ## Reddit Bot Setup
 In order for `reddit-wallpapers` to work, you must create your own Reddit bot. Reddit itself does not provide access to the links and content on its pages, so creating a bot that is given permission to go through its database is required. This takes about 5 mins, and the steps are outlind below.
