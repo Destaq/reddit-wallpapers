@@ -63,8 +63,8 @@ for i in range(len(images)):
     with open(f"image_{i+1}.{images[i][-3:]}", "wb") as handler:
         handler.write(img_data)
         if (
-            os.stat(f"image_{i+1}.{images[i][-3]}").st_size < 200000
+            os.stat(f"image_{i+1}.{images[i][-3:]}").st_size < 200000
         ):  # delete images under 200 kB; too fuzzy
-            os.remove(f"image_{i+1}.{images[i][-3]}")
+            os.remove(f"image_{i+1}.{images[i][-3:]}")
 
 sys.stdout.write("\n")
