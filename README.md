@@ -1,6 +1,8 @@
 # reddit-wallpapers
 
-This program will fetch, download, and save the 100 hottest wallpapers from the r/wallpaper subreddit to a folder in your computer. It can also optionally remove low-quality images, and then cycle through the dozens of images and set them as your desktop background.
+This program will fetch, download, and save the 100* hottest wallpapers from the r/wallpaper subreddit to a folder in your computer. It can also optionally remove low-quality images, and then cycle through the dozens of images and set them as your desktop background.
+
+\* *Note: due to Reddit image limitations and the way that some Reddit users upload their images, some images may not be available for download. The expected rate of download is ~85%, i.e. if you run the script with `NUM_IMAGES` set to 100, you should expect 85 images.`*
 
 ## Requirements
 

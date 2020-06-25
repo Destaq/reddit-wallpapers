@@ -58,11 +58,16 @@ sys.stdout.flush()
 for i in range(len(images)):
     sys.stdout.write(f"\rWriting image {i+1} of {len(images)}.")
     img_data = urlopen(images[i]).read()
-    with open(f"image_{i+1}.{images[i][-3:]}", "wb") as handler:
-        handler.write(img_data)
-        if (
-            os.stat(f"image_{i+1}.{images[i][-3:]}").st_size < 200000
-        ):  # delete images under 200 kB; too fuzzy
-            os.remove(f"image_{i+1}.{images[i][-3:]}")
+    try:
+        with open(f"image_{i+1}.{images[i][-3:]}", "wb") as handler:
+            handler.write(img_data)
+            if (
+                os.stat(f"image_{i+1}.{images[i][-3:]}").st_size < 200000
+            ):  # delete images under 200 kB; too fuzzy
+                os.remove(f"image_{i+1}.{images[i][-3:]}")
+                handler.close()
+            handler.close()
+    except WindowsError:
+        pass
 
 sys.stdout.write("\n")
