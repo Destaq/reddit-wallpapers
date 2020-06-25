@@ -47,12 +47,11 @@ for i in range(len(links)):
     soup = BeautifulSoup(html_page, "lxml")
 
     for link in soup.findAll("a"):
-
         if (
-            "https://i.redd.it/" in str(link.get("href"))[0:18]
-            and str(link.get("href")) not in images
-        ):
-            images.append(link.get("href"))
+            "https://i.redd.it/" in str(link.get("href"))
+            or "external-preview.redd.it/" in str(link.get("href"))
+        ) and str(link.get("href")) not in images:
+            images.append(str(link.get("href")))
 
 sys.stdout.flush()
 
