@@ -69,6 +69,6 @@ for i in range(len(images)):
                 handler.close()
             handler.close()
     except WindowsError:
-        print("Windows error occured. Moving on to next file...")
+        pass
 
 sys.stdout.write("\n")
