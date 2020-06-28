@@ -6,6 +6,7 @@ This program will fetch, download, and save the 100 (changeable number) hottest 
 
 -   `beautifulsoup4` (for BeautifulSoup) (`pip3 install beautifulsoup4`)
 -   `praw` (`pip3 install praw`)
+-   `lxml` (`pip3 install lxml`)
 
 All the above modules are available on PyPI. You can download them each individually or simply run `pip3 install -r requirements.txt` in the folder that houses requirements.txt.
 
