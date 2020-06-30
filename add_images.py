@@ -55,18 +55,16 @@ for i in range(len(links)):
 
 sys.stdout.flush()
 
-for i in range(len(images)):
+for i, image in enumerate(images):
     sys.stdout.write(f"\rWriting image {i+1} of {len(images)}.")
-    img_data = urlopen(images[i]).read()
+    img_data = urlopen(image).read()
     try:
-        with open(f"image_{i+1}.{images[i][-3:]}", "wb") as handler:
+        fname = f"image_{i+1}.{image.split('.')[-1]}"
+        with open(fname, "wb") as handler:
             handler.write(img_data)
-            if (
-                os.stat(f"image_{i+1}.{images[i][-3:]}").st_size < 200000
-            ):  # delete images under 200 kB; too fuzzy
-                os.remove(f"image_{i+1}.{images[i][-3:]}")
-                handler.close()
-            handler.close()
+        # delete images under 200 kB; too fuzzy
+        if os.stat(fname).st_size < 200000:
+            os.remove(fname) 
     except WindowsError:
         pass
 
