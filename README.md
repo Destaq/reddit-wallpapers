@@ -40,4 +40,6 @@ The only thing left to do at this point is run the program, with `python3 add_im
 
 _Last note: Once you have all of your images downloaded to your folder, all you have to do is navigate to your System Preferences/Settings and change the directory where your computer gets its images from. Below is an image showing how to do so on Mac. I recommend setting random order to true to be excited each time you see a new picture!_
 
+_PS: I've made another cycling wallpaper program, but this one is even better! It **teaches** you languages, countries, and more straight from your wallpaper, with contributions welcome to help expand the number of topics! Check it out [here](https://www.github.com/Destaq/wallpaper-learn)._
+
 ![System Preferences Image](/images/system_prefs.png?raw=true)
