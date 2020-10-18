@@ -29,29 +29,12 @@ reddit = praw.Reddit(
 
 subreddit = reddit.subreddit("wallpaper")
 
-links = []
-for submission in subreddit.hot(limit=NUM_IMAGES):
-    links.append("https://reddit.com" + submission.permalink)
-
 
 images = []
-for i in range(len(links)):
-    sys.stdout.write(f"\rProcessing image {i+1} of {NUM_IMAGES}.")
-
-    link_decoded = links[i][:21] + quote(links[i][21:])
-
-    req = Request(link_decoded, headers={"User-Agent": "Mozilla/5.0"})
-
-    html_page = urlopen(req)
-
-    soup = BeautifulSoup(html_page, "lxml")
-
-    for link in soup.findAll("a"):
-        if (
-            "https://i.redd.it/" in str(link.get("href"))
-            or "external-preview.redd.it/" in str(link.get("href"))
-        ) and str(link.get("href")) not in images:
-            images.append(str(link.get("href")))
+for submission in subreddit.hot(limit=NUM_IMAGES):
+    img_url = submission.url
+    if os.path.splitext()[-1]:
+        images.append(submission.url)
 
 sys.stdout.flush()
 
