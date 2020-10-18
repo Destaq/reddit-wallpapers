@@ -48,9 +48,9 @@ for i, image in enumerate(images):
         if os.stat(fname).st_size < 200000:
             os.remove(fname)
     except HTTPError:
-        print("\nHTTP Error 500")
+        print("\nHTTP Error 500!")
     except FileNotFoundError:
-        print(f"\n{image} is an invalid link")
+        print(f"\n{image} is an invalid link!")
     except WindowsError:
         pass
 
